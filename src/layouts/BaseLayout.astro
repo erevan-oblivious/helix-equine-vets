@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import LogoImg from '../images/favicon.svg';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Website Title", 
+  description = "Website Description" 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <title>{title}</title>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+      <a href="/" class="logo-link">
+        <Image src={LogoImg} alt="" class="header-logo" loading="eager"/>
+        <span class="logo-title">Website Title</span>
+      </a>
+
+    <!-- Hamburger Toggle Button -->
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-links" id="nav-menu">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+
+</header>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (hamburgerBtn && navMenu) {
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('is-active');
+      hamburgerBtn.classList.toggle('is-active');
+      hamburgerBtn.setAttribute('aria-expanded', isOpen.toString());
+    });
+  }
+</script>
+
+<main class="main">
+
+  <slot />
+
+</main>
+
+<footer class="footer">
+<hr class="divider-full">
+  <p>Business name, company registration number, charity registration number</p>
+  <p>&copy; {new Date().getFullYear()} Business Name. All rights reserved.</p>
+  <p><a href="/privacy">Privacy Policy</a></p>
+  <p><a href="/cookies">Cookie Policy</a></p>
+  <p><a href="/accessibility">Accessibility Statement</a></p>
+</footer>
+
+</body>
+
+</html>

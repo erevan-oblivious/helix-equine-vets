@@ -1,0 +1,471 @@
+/* ==========================================================================
+   Base Mechanics
+   ========================================================================== */
+
+/* Modern Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;  
+}
+
+/* Enable native smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Offset scroll stopping position so the heading isn't flush with the viewport edge */
+.schedule-title {
+  scroll-margin-top: 2rem;
+}
+
+/* Lists */
+ul {
+  list-style-position: inside;
+  padding: 0;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Root Variables and Body Styles
+   ========================================================================== */
+
+:root {
+  /* Layout Tokens */
+  --max-width-wide: 71.25rem; /* 1140px */
+  
+  /* Color Palette */
+  --bg-primary: #05386c; 
+  --bg-secondary: #D00079;
+  --border-subtle: rgba(255, 255, 255, 0.15);
+  --text-bright: #ffffff;
+  --text-muted: #a8c5e2;
+  --text-link-pink: #ff80c8;
+  --text-light-pink: #fbe6f2;
+
+  /* Typography */
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+
+  /* Component Tokens */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  background-color: var(--bg-primary);
+  color: var(--text-bright);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  
+}
+
+/* ==========================================================================
+   Images
+   ========================================================================== */
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-inline: auto;
+}
+
+/* Wide Image */
+.wide-image {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-inline: auto;
+  margin-block: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Figure Container */
+.image-figure {
+  margin-block: 0;
+  margin-inline: 0;
+  text-align: center;
+}
+
+/* Figure Captions */
+figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-light-pink);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* Photo Pair Grid */
+.photo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 1rem;                    /* Gap between images */
+  width: 100%;
+  margin-block: 1.5rem;
+  margin-inline: auto;
+}
+
+.photo-pair figure {
+  margin: 0;
+  text-align: center;
+}
+
+.photo-pair img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;              /* Fills the half-slot without distorting */
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+   Video Embeds
+   ========================================================================== */
+
+/* Container styling */
+.video-embed {
+  width: 100%;
+  max-width: var(--max-width-wide, 71.25rem);
+  margin: 2rem auto;
+}
+
+/* 16:9 aspect ratio wrapper to prevent layout shifts */
+.video-aspect-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000000;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Video element positioning */
+.video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Optional Caption */
+.video-caption {
+  font-size: 0.875rem;
+  color: #555555;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Header & Menu
+   ========================================================================== */
+
+/* Header */
+
+.header {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-primary);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width-wide);
+  width: 100%;
+  margin-inline: auto;
+  padding: 1.25rem 1.5rem;
+  position: relative; /* Anchors mobile dropdown */
+}
+
+/* Logo */
+
+.header-logo {
+  height: 3.25rem; /* ~52px tall keeps header slim */
+  width: auto;     /* Preserves logo aspect ratio */
+  display: block;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-bright);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.logo-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap; /* Prevents text wrapping awkwardly on small screens */
+}
+
+/* Desktop Menu */
+
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-links a {
+  color: var(--text-bright);
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text-link-pink);
+}
+
+.text-link {
+  color: var(--text-link-pink);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover {
+  color: var(--text-bright);
+
+}
+
+/* Hamburger Menu */
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 100;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-bright);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger Menu Overrides (< 1024px) */
+
+@media (max-width: 1023px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none; /* Correctly hides inline menu on mobile */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-primary);
+    flex-direction: column;
+    padding: 1.5rem 2.5rem;
+    gap: 1.25rem;
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 99;
+  }
+
+  /* Toggled active state */
+  .nav-links.is-active {
+    display: flex;
+  }
+
+  /* Hamburger icon morph to 'X' */
+  .hamburger.is-active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.is-active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* ==========================================================================
+   Hero Banner with Background Video
+   ========================================================================== */
+
+/* Hero Container Setup */
+.hero-banner {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #0d1b2a; /* Fallback brand color while loading */
+}
+
+/* Layer 1: Background Video covering container */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Layer 2: Semi-transparent Overlay for WCAG AA Contrast */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(13, 27, 42, 0.65); /* 65% brand overlay opacity */
+  z-index: 2;
+}
+
+/* Layer 3: Text & CTA Content */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--max-width-wide, 71.25rem);
+  padding: 3rem 1.5rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 45rem;
+  margin: 0 auto 2rem;
+  color: #e0e6ed;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Reduced Motion Override for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+
+  .hero-banner {
+    background-image: url('https://your-bucket.r2.cloudflarestorage.com/hero-poster.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* ==========================================================================
+   Standard Site Components
+   ========================================================================== */
+
+.main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-inline: auto;
+  padding: 0;
+  text-align: center;
+}
+
+hr.divider-full {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    var(--border-subtle) 20%, 
+    var(--border-subtle) 80%, 
+    transparent 100%
+  );
+  margin-block: 1.5rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.heading {
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+.prose-container {
+  max-width: 65ch;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+.prose-container ul { /* Styles all content lists automatically */
+  width: fit-content;
+  margin-inline: auto;
+  text-align: left;
+  list-style-position: outside;
+  padding-left: 1.25rem;
+  margin-block: 1rem;
+}
+
+/* ==========================================================================
+   Custom Site Components
+   ========================================================================== */
+
+/* to add custom components here as needed */
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-inline: auto;
+  text-align: center;
+  padding: 1.25rem 2rem;
+  font-size: var(--font-size-base);
+  color: var(--text-muted);
+}
+
+/* Links within the footer */
+.footer a {
+  color: var(--text-muted); /* Matches default footer text color */
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+/* Hover and focus states for accessibility */
+.footer a:hover,
+.footer a:focus {
+  color: var(--text-bright);
+}
