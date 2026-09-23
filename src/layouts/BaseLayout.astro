@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
 import { Image } from 'astro:assets';
-import LogoImg from '../images/favicon.svg';
+import LogoImg from '../images/helix-logo-2.png';
+import LogoImgLight from '../images/helix-logo-1.jpg';
 
 interface Props {
   title?: string;
@@ -9,8 +10,8 @@ interface Props {
 }
 
 const { 
-  title = "Website Title", 
-  description = "Website Description" 
+  title = "Helix Equine Vets", 
+  description = "Helix Equine Vets - Independent Equine Veterinary Care Across Northumberland" 
 } = Astro.props;
 ---
 
@@ -31,8 +32,7 @@ const {
 <header class="header">
   <div class="header-inner">
       <a href="/" class="logo-link">
-        <Image src={LogoImg} alt="" class="header-logo" loading="eager"/>
-        <span class="logo-title">Website Title</span>
+        <Image src={LogoImg} alt="Helix Equine Vets" class="header-logo" loading="eager"/>
       </a>
 
     <!-- Hamburger Toggle Button -->
@@ -74,8 +74,8 @@ const {
 
 <footer class="footer">
 <hr class="divider-full">
-  <p>Business name, company registration number, charity registration number</p>
-  <p>&copy; {new Date().getFullYear()} Business Name. All rights reserved.</p>
+  <p>Helix Equine Vets</p>
+  <p>&copy; {new Date().getFullYear()} Helix Equine Vets. All rights reserved.</p>
   <p><a href="/privacy">Privacy Policy</a></p>
   <p><a href="/cookies">Cookie Policy</a></p>
   <p><a href="/accessibility">Accessibility Statement</a></p>
