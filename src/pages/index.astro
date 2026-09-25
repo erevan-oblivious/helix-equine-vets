@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+import LogoImg from '../images/helix-logo-2.png';
+import LogoImgLight from '../images/helix-logo-1.jpg';
 
 ---
 
@@ -9,7 +11,70 @@ import { Image } from 'astro:assets';
   description="Business Description"
 >
 
+<section class="hero">
+  <div class="hero-container">
 
+    <!-- Main Title -->
+    <h1 class="hero-title">
+      Independent Equine Veterinary Care Across Northumberland
+    </h1>
 
+    <!-- Subheading / Value Proposition -->
+    <p class="hero-lead">
+      Experience, continuity and clinical excellence
+    </p>
+
+    <!-- Body Description -->
+    <p class="hero-description">
+      Helix Equine Vets is an independent, fully mobile equine veterinary practice serving Northumberland and Newcastle. No clinic to travel to — we bring advanced veterinary care directly to your yard.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="hero-actions">
+      <a href="tel:07919533576" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Emergency Call</span>
+      </a>
+      <a href="/contact" class="btn btn-secondary">
+        <span>Register / Enquire</span>
+      </a>
+    </div>
+
+    <!-- Key Service Highlights (Fills visual space in text-only layout) -->
+    <div class="hero-highlights">
+      <div class="highlight-card">
+        <div class="highlight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h3>Our Services</h3>
+          <p>Care delivered directly where your horse lives and works across Northumberland and Newcastle.</p>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <h3>About Us</h3>
+          <p>See the same familiar clinician who knows your horse and yard history visit after visit.</p>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 12h10"/><path d="M12 7v10"/></svg>
+        </div>
+        <div>
+          <h3>Contact Us</h3>
+          <p>Referral-quality digital radiography, ultrasonography and endoscopy brought directly to you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 </BaseLayout>

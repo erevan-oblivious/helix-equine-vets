@@ -1,4 +1,10 @@
 /* ==========================================================================
+   Google Fonts Import
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+
+/* ==========================================================================
    Base Mechanics
    ========================================================================== */
 
@@ -30,7 +36,8 @@ ul {
    ========================================================================== */
 
 :root {
-  /* Layout Tokens */
+
+/* Layout Tokens */
   --max-width-wide: 71.25rem; /* 1140px */
   
 /* BRAND CORE PALETTE (Logo-Derived) */
@@ -54,7 +61,8 @@ ul {
   --color-border: #E2E7EC;      /* Crisp, clean borders */
 
   /* Typography */
-  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-size-base: 1rem;
   --font-size-lg: 1.25rem;
 
@@ -68,14 +76,21 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  font-family: var(--font-family-base);
+  font-family: var(--font-body);
   font-size: var(--font-size-base);
   background-color: var(--color-bg-site);
-  color: var(--text-main);
+  color: var(--color-text-main);
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-navy);
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 /* ==========================================================================
@@ -231,14 +246,14 @@ figcaption {
 }
 
 .nav-links a {
-  color: var(--color-text-inverse);
+  color: var(--color-text-main);
   text-decoration: none;
   text-align: center;
   transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: var(--color-text-muted);
+  color: var(--color-gold-hover);
 }
 
 .text-link {
@@ -249,7 +264,7 @@ figcaption {
 }
 
 .text-link:hover {
-  color: var(--color-text-inverse);
+  color: var(--color-gold-hover);
 }
 
 /* Hamburger Menu */
@@ -269,7 +284,7 @@ figcaption {
   display: block;
   width: 24px;
   height: 2px;
-  background-color: var(--color-text-inverse);
+  background-color: var(--color-bg-dark);
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -287,12 +302,15 @@ figcaption {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--color-bg-dark);
+    
+    /* UPDATED: Uses valid background & border CSS tokens */
+    background-color: var(--color-bg-surface); /* Solid White (#FFFFFF) */
+    border-bottom: 1px solid var(--color-border);
+    
     flex-direction: column;
     padding: 1.5rem 2.5rem;
     gap: 1.25rem;
-    border-bottom: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     z-index: 99;
   }
 
@@ -314,6 +332,170 @@ figcaption {
     transform: translateY(-7px) rotate(-45deg);
   }
 }
+
+/* ==========================================================================
+   Hero Banner with Text Only
+   ========================================================================== */
+
+   .hero {
+    padding: 4rem 1.5rem 5rem;
+    background-color: var(--color-bg-site);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-teal);
+    border-radius: 50%;
+  }
+
+  .badge-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-teal);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* Title & Text Typography */
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 3.85rem);
+    line-height: 1.1;
+    color: var(--color-navy);
+    max-width: 900px;
+    margin: 0 auto 2.25rem;
+    font-weight: 700;
+  }
+
+  .hero-lead {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 500;
+    color: var(--color-teal);
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto 2.25rem;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    line-height: 1.65;
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 760px;
+    margin: 0 auto 2.25rem;
+  }
+
+  /* CTAs */
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0 auto 2.25rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn-primary {
+    background-color: var(--color-gold);
+    color: #ffffff;
+    border: 1px solid var(--color-gold);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-gold-hover);
+    border-color: var(--color-gold-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-navy);
+    border: 1.5px solid var(--color-navy);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-navy);
+    color: #ffffff;
+  }
+
+  /* Highlight Feature Grid */
+  .hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .highlight-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(11, 34, 64, 0.03);
+  }
+
+  .highlight-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: rgba(11, 34, 64, 0.05);
+    color: var(--color-navy);
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .highlight-card h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .highlight-card p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding-top: 2.5rem;
+    }
+    
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
 
 /* ==========================================================================
    Hero Banner with Background Video
