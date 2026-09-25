@@ -182,9 +182,10 @@
     const yardSection = document.getElementById('yard-details-section');
     const yardRequiredInputs = document.querySelectorAll<HTMLInputElement>('[data-yard-required]');
 
-    if (!yardSection) return;
-
     function toggleYardSection() {
+      // Guard clause inside the function ensures yardSection is not null
+      if (!yardSection) return;
+
       const selectedOption = document.querySelector<HTMLInputElement>('input[name="isHorseAtHome"]:checked')?.value;
       const isHome = selectedOption === 'yes';
 
