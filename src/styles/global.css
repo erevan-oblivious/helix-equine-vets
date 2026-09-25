@@ -91,6 +91,12 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-navy);
   font-weight: 500;
   letter-spacing: -0.01em;
+
+}
+
+h1 {
+  margin: 0;
+  line-height: 1.15;
 }
 
 /* ==========================================================================
@@ -657,24 +663,74 @@ hr.divider-full {
   margin-block: 1rem;
 }
 
-.prose-navy-wrapper {
-  width: 100%;
-  background-color: var(--color-navy);
-  color: var(--color-text-inverse);
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--color-text-inverse);
-  }
-  padding-block: 1.25rem; /* Top and bottom vertical breathing room */
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 /* ==========================================================================
    Custom Site Components
    ========================================================================== */
 
-/* to add custom components here as needed */
+.prose-navy-wrapper {
+  width: 100%;
+  background-color: var(--color-navy);
+  color: var(--color-text-inverse);
+  h1, h2, h3, h4, h5, h6 { color: var(--color-text-inverse); }
+  padding-block: 1.25rem; /* Top and bottom vertical breathing room */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden; /* Prevents quotes from causing horizontal scroll */
+  /* Inline Text Links */
+  a:not(.btn) {
+    color: var(--color-gold);
+    text-decoration: underline;
 
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+.prose-navy-wrapper .prose-container {
+  position: relative; /* Position anchor for the quotation marks */
+}
+
+/* Opening Quotation Mark (Top-Left) */
+.prose-navy-wrapper .prose-container::before {
+  content: "“";
+  position: absolute;
+  top: -1.5rem;
+  left: -3rem;
+  font-family: var(--font-heading), serif; /* Uses Cormorant Garamond */
+  font-size: 10rem;
+  line-height: 1;
+  color: var(--color-gold);
+  opacity: 0.8; /* Subtle opacity so it doesn't obstruct reading */
+  pointer-events: none; /* Allows text beneath to be selectable */
+  user-select: none;
+}
+
+/* Closing Quotation Mark (Bottom-Right) */
+.prose-navy-wrapper .prose-container::after {
+  content: "”";
+  position: absolute;
+  bottom: -4.5rem;
+  right: -3rem;
+  font-family: var(--font-heading), serif;
+  font-size: 10rem;
+  line-height: 1;
+  color: var(--color-gold);
+  opacity: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
+.section-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-teal);
+  display: block;
+  margin-bottom: 0.5rem;
+}
 
 /* ==========================================================================
    Footer
