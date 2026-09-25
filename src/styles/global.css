@@ -420,20 +420,32 @@ figcaption {
   }
 
   .btn-primary:hover {
-    background-color: var(--color-gold-hover);
-    border-color: var(--color-gold-hover);
+    background-color: #A62B2B;
+    border-color: #A62B2B;
     transform: translateY(-1px);
   }
 
   .btn-secondary {
-    background-color: transparent;
-    color: var(--color-navy);
+    background-color: var(--color-navy);
+    color: var(--color-text-inverse);
     border: 1.5px solid var(--color-navy);
   }
 
   .btn-secondary:hover {
-    background-color: var(--color-navy);
+    background-color: transparent;
+    border-color: var(--color-navy);
+    color: var(--color-text-main);
+  }
+
+  .btn-whatsapp {
+    background-color: var(--color-teal);
     color: #ffffff;
+    border: 1px solid var(--color-teal);
+  }
+
+  .btn-whatsapp:hover {
+    background-color: #20ba5a;
+    border-color: #20ba5a;
   }
 
   /* Highlight Feature Grid */
@@ -496,6 +508,24 @@ figcaption {
       width: 100%;
     }
   }
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 12px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
 
 /* ==========================================================================
    Hero Banner with Background Video

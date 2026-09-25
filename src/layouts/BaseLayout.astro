@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { Image } from 'astro:assets';
 import LogoImg from '../images/helix-logo-2.png';
 import LogoImgLight from '../images/helix-logo-1.jpg';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 
 interface Props {
   title?: string;
@@ -80,6 +81,8 @@ const {
   <p><a href="/cookies">Cookie Policy</a></p>
   <p><a href="/accessibility">Accessibility Statement</a></p>
 </footer>
+
+<WhatsAppFloat />
 
 </body>
 
