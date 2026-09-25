@@ -1,0 +1,157 @@
+---
+const values = [
+  {
+    number: "01",
+    title: "Uncompromising Continuity",
+    description: "You see the same experienced vet every single visit. We build a genuine, long-term understanding of your horse's history, temperament, and baseline health."
+  },
+  {
+    number: "02",
+    title: "Yard-First Clinical Excellence",
+    description: "Equipped with referral-quality mobile diagnostics, we bring advanced radiography, ultrasonography, and endoscopy directly to your stable—reducing stress for your horse."
+  },
+
+  {
+    number: "03",
+    title: "Collaborative Care",
+    description: "We work alongside your farrier, physio, and yard manager as an integrated team, ensuring every aspect of your horse's management is aligned."
+  }
+];
+---
+
+<section class="values-section">
+  <div class="values-container">
+    
+    <!-- Section Header -->
+    <div class="values-header">
+      <span class="values-eyebrow">Our Standards</span>
+      <h2 class="values-title">Equine Veterinary Care Built Around Trust & Continuity</h2>
+      <p class="values-subtitle">
+        Independent care means our decisions are driven entirely by equine welfare, client trust, and clinical best practices.
+      </p>
+    </div>
+
+    <!-- Values Grid -->
+    <div class="values-grid">
+      {values.map((item) => (
+        <div class="value-card">
+          <div class="value-number">{item.number}</div>
+          <h3 class="value-title">{item.title}</h3>
+          <p class="value-description">{item.description}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .values-section {
+    padding: 6rem 1.5rem;
+    background-color: var(--color-navy); /* Deep Navy Contrast Canvas (#0B2240) */
+    width: 100%;
+    color: var(--color-text-inverse);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .values-container {
+    margin: 0 auto;
+  }
+
+  /* Header Typography */
+  .values-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 4rem;
+  }
+
+  .values-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .values-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 4vw, 3.125rem);
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 1rem 0;
+  }
+
+  .values-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+  }
+
+  /* Grid Layout */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: var(--max-width-wide, 71.25rem);
+    margin-inline: auto;
+  }
+
+  /* Individual Value Card */
+  .value-card {
+    position: relative;
+    padding: 2rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md, 8px);
+    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(197, 146, 69, 0.4); /* Gold border highlight on hover */
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Gold Number Indicator */
+  .value-number {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    border-bottom: 1.5px solid var(--color-gold);
+    padding-bottom: 0.25rem;
+  }
+
+  .value-title {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.25;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .value-description {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .values-section {
+      padding: 4rem 1rem;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+</style>

@@ -613,8 +613,6 @@ figcaption {
 .main {
   flex-grow: 1;
   width: 100%;
-  max-width: var(--max-width-wide);
-  margin-inline: auto;
   padding: 0;
   text-align: center;
 }
@@ -625,8 +623,8 @@ hr.divider-full {
   background: linear-gradient(
     90deg, 
     transparent 0%, 
-    var(--border-subtle) 20%, 
-    var(--border-subtle) 80%, 
+    var(--color-navy) 20%, 
+    var(--color-navy) 80%, 
     transparent 100%
   );
   margin-block: 1.5rem;
