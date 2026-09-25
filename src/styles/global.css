@@ -645,6 +645,7 @@ hr.divider-full {
   max-width: 65ch;
   margin-inline: auto;
   padding: 1rem;
+  color: inherit;
 }
 
 .prose-container ul { /* Styles all content lists automatically */
@@ -654,6 +655,18 @@ hr.divider-full {
   list-style-position: outside;
   padding-left: 1.25rem;
   margin-block: 1rem;
+}
+
+.prose-navy-wrapper {
+  width: 100%;
+  background-color: var(--color-navy);
+  color: var(--color-text-inverse);
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-inverse);
+  }
+  padding-block: 1.25rem; /* Top and bottom vertical breathing room */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================================
