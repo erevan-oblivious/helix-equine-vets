@@ -1,0 +1,488 @@
+---
+// src/components/NewHorseForm.astro
+---
+
+<section class="register-section" id="register-form">
+  <div class="register-container">
+    
+    <div class="section-header">
+      <span class="section-eyebrow">Online Onboarding</span>
+      <h2 class="section-title">Register Your Horse or Yard</h2>
+      <p class="section-description">
+        Please complete this form prior to your first routine visit. If you require emergency care right now, please call our 24/7 line on <a href="tel:07919533576" class="emergency-link">07919 533 576</a> instead.
+      </p>
+    </div>
+
+    <form class="registration-form" action="/api/register" method="POST">
+      
+      <!-- SECTION 1: OWNER DETAILS -->
+      <fieldset class="form-fieldset">
+        <legend class="fieldset-title">1. Owner Information</legend>
+        
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="first-name">First Name <span class="required">*</span></label>
+            <input type="text" id="first-name" name="firstName" required autocomplete="given-name" placeholder="e.g. Sarah" />
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name <span class="required">*</span></label>
+            <input type="text" id="last-name" name="lastName" required autocomplete="family-name" placeholder="e.g. Jenkins" />
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="e.g. 07123 456789" />
+            <span class="field-hint">Used for visit reminders & emergency contact.</span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="optional">(Optional)</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="e.g. sarah@example.co.uk" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="billing-address">Home / Billing Address <span class="required">*</span></label>
+          <input type="text" id="billing-address" name="billingAddress" required placeholder="House number/name, street, town, postcode" />
+        </div>
+
+        <!-- CONDITIONAL RADIO TOGGLE -->
+        <div class="form-group radio-toggle-group">
+          <label>Is your horse kept at this home address? <span class="required">*</span></label>
+          <div class="radio-options">
+            <label class="radio-card">
+              <input type="radio" name="isHorseAtHome" value="yes" checked />
+              <span class="radio-label-text">Yes — Horse is kept at home</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="isHorseAtHome" value="no" />
+              <span class="radio-label-text">No — Kept at a separate yard / livery</span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- SECTION 2: YARD LOCATION & ACCESS (CONDITIONAL) -->
+      <fieldset class="form-fieldset" id="yard-details-section" style="display: none;">
+        <legend class="fieldset-title">2. Yard Location & Access</legend>
+        
+        <div class="form-group">
+          <label for="yard-name">Yard Name / Livery <span class="required">*</span></label>
+          <input type="text" id="yard-name" name="yardName" data-yard-required placeholder="e.g. Highfield Stables or Manor Farm" />
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="yard-postcode">Yard Postcode <span class="required">*</span></label>
+            <input type="text" id="yard-postcode" name="yardPostcode" data-yard-required placeholder="e.g. NE61 1AA" />
+            <span class="field-hint">Determines your Zone Visit discount days.</span>
+          </div>
+          <div class="form-group">
+            <label for="what3words">What3Words Location <span class="optional">(Optional)</span></label>
+            <input type="text" id="what3words" name="what3words" placeholder="e.g. ///words.exact.location" />
+            <span class="field-hint">Helps us pinpoint exact field or stable gates.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="access-notes">Yard Access & Parking Notes <span class="optional">(Optional)</span></label>
+          <textarea id="access-notes" name="accessNotes" rows="2" placeholder="e.g. Gate code, loose dogs on site, narrow lane, or specific parking instructions for the vet van."></textarea>
+        </div>
+      </fieldset>
+
+      <!-- SECTION 3: HORSE DETAILS & MEDICAL HISTORY -->
+      <fieldset class="form-fieldset">
+        <legend class="fieldset-title">3. Horse Details & Medical History</legend>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="horse-name">Horse Registered Name <span class="required">*</span></label>
+            <input type="text" id="horse-name" name="horseName" required placeholder="e.g. Diamond Jubilee" />
+          </div>
+          <div class="form-group">
+            <label for="stable-name">Stable / Barn Name <span class="optional">(Optional)</span></label>
+            <input type="text" id="stable-name" name="stableName" placeholder="e.g. Toby" />
+          </div>
+        </div>
+
+        <div class="form-row three-col">
+          <div class="form-group">
+            <label for="breed">Breed / Type</label>
+            <input type="text" id="breed" name="breed" placeholder="e.g. Irish Draught" />
+          </div>
+          <div class="form-group">
+            <label for="age">Age / YOB</label>
+            <input type="text" id="age" name="age" placeholder="e.g. 12 yrs or 2014" />
+          </div>
+          <div class="form-group">
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex">
+              <option value="">Select...</option>
+              <option value="gelding">Gelding</option>
+              <option value="mare">Mare</option>
+              <option value="stallion">Stallion</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="microchip">Microchip / Passport No. <span class="optional">(Optional)</span></label>
+            <input type="text" id="microchip" name="microchip" placeholder="985121000000000" />
+          </div>
+          <div class="form-group">
+            <label for="previous-vet">Previous Veterinary Practice <span class="optional"></span></label>
+            <input type="text" id="previous-vet" name="previousVet" required placeholder="e.g. Moorland Equine Vets or N/A" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="medical-history">Pre-Existing Conditions or Ongoing Medications</label>
+          <textarea id="medical-history" name="medicalHistory" rows="3" placeholder="Please list any ongoing medical conditions (e.g. Cushing's/PPID, laminitis history, allergies) or current medications."></textarea>
+        </div>
+      </fieldset>
+
+      <!-- SECTION 4: CONSENT & SUBMIT -->
+      <fieldset class="form-fieldset consent-fieldset">
+        <div class="checkbox-group">
+          <input type="checkbox" id="history-consent" name="historyConsent" required />
+          <label for="history-consent">
+            I authorize Helix Equine Vets to request previous medical and clinical records from my former veterinary practice. <span class="required">*</span>
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms-consent" name="termsConsent" required />
+          <label for="terms-consent">
+            I agree to the Helix Equine Vets terms of business and privacy policy. <span class="required">*</span>
+          </label>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">
+            <span>Submit Registration</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </fieldset>
+
+    </form>
+
+  </div>
+</section>
+
+<!-- CLIENT-SIDE TOGGLE SCRIPT -->
+<script>
+  function setupFormToggle() {
+    const radioInputs = document.querySelectorAll<HTMLInputElement>('input[name="isHorseAtHome"]');
+    const yardSection = document.getElementById('yard-details-section');
+    const yardRequiredInputs = document.querySelectorAll<HTMLInputElement>('[data-yard-required]');
+
+    if (!yardSection) return;
+
+    function toggleYardSection() {
+      const selectedOption = document.querySelector<HTMLInputElement>('input[name="isHorseAtHome"]:checked')?.value;
+      const isHome = selectedOption === 'yes';
+
+      if (isHome) {
+        yardSection.style.display = 'none';
+        yardRequiredInputs.forEach(input => input.removeAttribute('required'));
+      } else {
+        yardSection.style.display = 'block';
+        yardRequiredInputs.forEach(input => input.setAttribute('required', 'true'));
+      }
+    }
+
+    radioInputs.forEach(radio => {
+      radio.addEventListener('change', toggleYardSection);
+    });
+
+    // Initialize on page load
+    toggleYardSection();
+  }
+
+  // Run on initial page load and Astro page navigation events
+  setupFormToggle();
+  document.addEventListener('astro:page-load', setupFormToggle);
+</script>
+
+<style>
+  .register-section {
+    padding: 4.5rem 1.5rem;
+    background-color: var(--color-bg-site);
+  }
+
+  .register-container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    color: var(--color-navy);
+    line-height: 1.15;
+    margin: 0 0 1rem 0;
+  }
+
+  .section-description {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .emergency-link {
+    color: var(--color-emergency, #A62B2B);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  .registration-form {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md, 8px);
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 16px rgba(11, 34, 64, 0.03);
+  }
+
+  .form-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 2.5rem 0;
+  }
+
+  .form-fieldset:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .fieldset-title {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    border-bottom: 1.5px solid var(--color-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  /* Radio Card Toggle Styling */
+  .radio-toggle-group {
+    margin-top: 1.5rem;
+    background-color: var(--color-bg-site);
+    padding: 1.25rem;
+    border-radius: var(--radius-sm, 6px);
+    border: 1px solid var(--color-border);
+  }
+
+  .radio-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+    margin-top: 0.5rem;
+  }
+
+  .radio-card {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm, 6px);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .radio-card:hover {
+    border-color: var(--color-teal);
+  }
+
+  .radio-card input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-teal);
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .radio-label-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .form-row {
+    display: grid;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-row.two-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row.three-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-row .form-group {
+    margin-bottom: 0;
+  }
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin-bottom: 0.375rem;
+  }
+
+  .required {
+    color: var(--color-emergency, #A62B2B);
+  }
+
+  .optional {
+    font-weight: 400;
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+  }
+
+  .field-hint {
+    font-size: 0.775rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    color: var(--color-navy);
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm, 6px);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-teal);
+    box-shadow: 0 0 0 3px rgba(0, 91, 96, 0.12);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 70px;
+  }
+
+  .consent-fieldset {
+    background-color: var(--color-bg-site);
+    padding: 1.5rem;
+    border-radius: var(--radius-sm, 6px);
+    border: 1px solid var(--color-border);
+  }
+
+  .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 0.15rem;
+    accent-color: var(--color-teal);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .checkbox-group label {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-main);
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  .form-submit {
+    margin-top: 1.75rem;
+  }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.9375rem 1.5rem;
+    background-color: var(--color-navy);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm, 6px);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .btn-submit:hover {
+    background-color: var(--color-teal);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 640px) {
+    .register-section {
+      padding: 3rem 1rem;
+    }
+
+    .registration-form {
+      padding: 1.5rem 1.25rem;
+    }
+
+    .radio-options {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row.two-col,
+    .form-row.three-col {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
