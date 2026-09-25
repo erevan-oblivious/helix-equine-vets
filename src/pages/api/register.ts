@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
 
 export const prerender = false; // Runs dynamically on Cloudflare Workers
 
@@ -42,10 +43,8 @@ export const POST: APIRoute = async (context) => {
       `)
       .join('');
 
-    // 4. Access Cloudflare Environment Variable
-   // Replace line 46 with:
-    const locals = context.locals as { runtime?: { env?: Record<string, string> } };
-    const apiKey = locals.runtime?.env?.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
+    // 4. Access Cloudflare Secret via 'cloudflare:workers' virtual module
+    const apiKey = env.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
 
     if (!apiKey) {
       throw new Error('RESEND_API_KEY environment variable is missing.');
@@ -87,7 +86,7 @@ export const POST: APIRoute = async (context) => {
     if (!resendResponse.ok) {
       const errorText = await resendResponse.text();
       console.error('Resend delivery failed:', errorText);
-      throw new Error('Failed to dispatch notification email.');
+      throw new Error(`Failed to dispatch notification email: ${resendResponse.statusText}`);
     }
 
     // 6. Redirect to Thank You page
