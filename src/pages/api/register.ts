@@ -63,7 +63,7 @@ export const POST: APIRoute = async (context) => {
       },
       body: JSON.stringify({
         from: 'Helix Equine Vets <onboarding@resend.dev>',
-        to: ['rcorbett92@gmail.com'],
+        to: ['max-ling@outlook.com'],
         reply_to: 'rcorbett92@gmail.com',
         subject: `New Registration: ${horseName} — ${ownerName}`,
         html: `
