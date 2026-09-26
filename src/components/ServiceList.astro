@@ -73,7 +73,7 @@ const services = [
   /* Grid Container */
   .services-list-grid {
     list-style: none;
-    max-width: 720px; /* Keeps card width comfortable and centered on desktop */
+    max-width: 720px;
     padding: 0;
     margin-inline: auto;
     display: grid;
@@ -81,10 +81,10 @@ const services = [
     gap: 1rem;
   }
 
-  /* List Item Card */
+  /* List Item Card - Desktop (Horizontal with Left-Aligned Text) */
   .service-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     padding: 1.25rem 1.5rem;
     background-color: var(--color-bg-surface);
@@ -96,7 +96,7 @@ const services = [
 
   .service-item:hover {
     transform: translateY(-2px);
-    border-color: var(--color-teal); /* Warm gold subtle highlight */
+    border-color: var(--color-teal);
     box-shadow: 0 6px 16px rgba(11, 34, 64, 0.06);
   }
 
@@ -118,8 +118,10 @@ const services = [
     font-weight: 600;
     color: var(--color-teal);
     line-height: 1.35;
+    text-align: left; /* Left-aligned on desktop so multi-line text stays neat */
   }
 
+  /* Mobile Portrait Adjustments */
   @media (max-width: 640px) {
     .services-simple-section {
       padding: 3rem 1rem;
@@ -130,8 +132,17 @@ const services = [
       gap: 0.875rem;
     }
 
+    /* Stack icon above text and center everything */
     .service-item {
-      padding: 1rem 1.25rem;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+      padding: 1.25rem 1rem;
+    }
+
+    .service-text {
+      text-align: center; /* Clean, centered text when wrapping over multiple lines */
     }
   }
 </style>

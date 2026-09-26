@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import LogoImg from '../images/helix-logo-2.png';
 import LogoImgLight from '../images/helix-logo-1.jpg';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import PageNavigationGrid from '../components/PageNavigationGrid.astro';
 
 interface Props {
   title?: string;
@@ -71,6 +72,8 @@ const {
 <main class="main">
 
   <slot />
+
+<PageNavigationGrid />
 
 </main>
 

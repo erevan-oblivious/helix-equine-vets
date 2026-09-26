@@ -99,6 +99,20 @@ h1 {
   line-height: 1.15;
 }
 
+.text-link {
+  color: var(--color-gold);
+  text-decoration: none;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: #0B2240; /* Deep Navy */
+  text-decoration-color: var(--color-teal)
+}
+
 /* ==========================================================================
    Images
    ========================================================================== */
@@ -720,6 +734,22 @@ hr.divider-full {
   opacity: 0.8;
   pointer-events: none;
   user-select: none;
+}
+
+@media (max-width: 768px) {
+  .prose-navy-wrapper .prose-container::before {
+    font-size: 5rem;    /* Scale down quote size for small viewports */
+    top: -0.75rem;
+    left: 0.25rem;      /* Pull quote inside the visible screen padding */
+    opacity: 0.35;      /* Softer contrast so quote sits cleanly behind mobile body text */
+  }
+
+  .prose-navy-wrapper .prose-container::after {
+    font-size: 5rem;
+    bottom: -2rem;
+    right: 0.25rem;     /* Pull quote inside the visible screen padding */
+    opacity: 0.35;
+  }
 }
 
 .section-eyebrow {
