@@ -357,7 +357,7 @@ figcaption {
    Hero Banner with Text Only
    ========================================================================== */
 
-   .hero {
+  .hero {
     padding: 4rem 1.5rem 5rem;
     background-color: var(--color-bg-site);
     border-bottom: 1px solid var(--color-border);
