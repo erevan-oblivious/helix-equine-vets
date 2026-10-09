@@ -2,19 +2,22 @@
 import '../styles/global.css';
 import { Image } from 'astro:assets';
 import LogoImg from '../images/helix-logo-2.png';
-import LogoImgLight from '../images/helix-logo-1.jpg';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import PageNavigationGrid from '../components/PageNavigationGrid.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const { 
   title = "Helix Equine Vets", 
-  description = "Helix Equine Vets - Independent Equine Veterinary Care Across Northumberland" 
+  description = "Helix Equine Vets - Independent Equine Veterinary Care Across Northumberland",
+  image = "/favicon.ico"
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin);
 ---
 
 <!DOCTYPE html>
@@ -24,12 +27,24 @@ const {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    
     <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 
 <body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="header">
   <div class="header-inner">
@@ -38,7 +53,13 @@ const {
       </a>
 
     <!-- Hamburger Toggle Button -->
-    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <button 
+      class="hamburger" 
+      id="hamburger-btn" 
+      aria-label="Toggle navigation menu" 
+      aria-expanded="false" 
+      aria-controls="nav-menu"
+    >
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
@@ -52,38 +73,55 @@ const {
       <a href="/pricing">Pricing</a>
       <a href="/contact">Contact</a>
     </nav>
+
+    <script>
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const navMenu = document.getElementById('nav-menu');
+
+      if (hamburgerBtn && navMenu) {
+        const toggleMenu = (open?: boolean) => {
+          const state = open ?? !navMenu.classList.contains('is-active');
+          navMenu.classList.toggle('is-active', state);
+          hamburgerBtn.classList.toggle('is-active', state);
+          hamburgerBtn.setAttribute('aria-expanded', state.toString());
+        };
+
+        hamburgerBtn.addEventListener('click', () => toggleMenu());
+
+        // Close menu on Escape key press
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && navMenu.classList.contains('is-active')) {
+            toggleMenu(false);
+            hamburgerBtn.focus();
+          }
+        });
+      }
+    </script>
+
   </div>
 
 </header>
 
-<script>
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  const navMenu = document.getElementById('nav-menu');
-
-  if (hamburgerBtn && navMenu) {
-    hamburgerBtn.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('is-active');
-      hamburgerBtn.classList.toggle('is-active');
-      hamburgerBtn.setAttribute('aria-expanded', isOpen.toString());
-    });
-  }
-</script>
-
-<main class="main">
+<main class="main" id="main-content">
 
   <slot />
 
-<PageNavigationGrid />
+  <PageNavigationGrid />
 
 </main>
 
 <footer class="footer">
-<hr class="divider-full">
+  <hr class="divider-full">
+
   <p>Helix Equine Vets</p>
   <p>&copy; {new Date().getFullYear()} Helix Equine Vets. All rights reserved.</p>
-  <p><a href="/privacy">Privacy Policy</a></p>
-  <p><a href="/cookies">Cookie Policy</a></p>
-  <p><a href="/accessibility">Accessibility Statement</a></p>
+  
+  <nav class="footer-nav" aria-label="Legal navigation">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/cookies">Cookie Policy</a>
+    <a href="/accessibility">Accessibility Statement</a>
+  </nav>
+
 </footer>
 
 <WhatsAppFloat />
