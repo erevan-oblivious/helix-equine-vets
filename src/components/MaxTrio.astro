@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import max1 from '../images/max-1.jpeg';
+import max2 from '../images/max-2.jpeg';
+import max3 from '../images/max-3.jpeg';
+---
+
+<section class="photo-gallery-container">
+  <div class="photo-grid">
+    <div class="photo-card">
+      <Image src={max2} alt="Max conducting equine endoscopy" class="photo-img" />
+    </div>
+    <div class="photo-card">
+      <Image src={max1} alt="Max portrait" class="photo-img" />
+    </div>
+    <div class="photo-card">
+      <Image src={max3} alt="Max conducting equine endoscopy" class="photo-img" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .photo-gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Desktop side-by-side layout */
+  @media (min-width: 768px) {
+    .photo-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .photo-card {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+  }
+
+  .photo-card:hover .photo-img {
+    transform: scale(1.03);
+  }
+</style>
