@@ -39,7 +39,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/helix-favicon.svg" />
+    <link rel="icon" href="/helix-favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/helix-favicon.png" />
+
 </head>
 
 <body>
@@ -71,7 +75,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
       <a href="/about">About</a>
       <a href="/services">Services</a>
       <a href="/pricing">Pricing</a>
-      <a href="/contact">Contact</a>
+      <!-- <a href="/contact">Contact</a> add this component back in when live-->
     </nav>
 
     <script>
@@ -124,7 +128,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
 
 </footer>
 
-<WhatsAppFloat />
+<!--  <WhatsAppFloat /> Add when go live-->
 
 </body>
 

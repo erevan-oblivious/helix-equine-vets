@@ -1,6 +1,6 @@
 import { defineMiddleware } from 'astro:middleware';
 
-const IS_MAINTENANCE = true; // Set to false when ready to launch
+const IS_MAINTENANCE = false; // Set to false when ready to launch
 
 export const onRequest = defineMiddleware((context, next) => {
   if (IS_MAINTENANCE) {
