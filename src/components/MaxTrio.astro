@@ -32,11 +32,37 @@ import max3 from '../images/max-3.jpeg';
     gap: 1.5rem;
   }
 
-  /* Desktop side-by-side layout */
+  /* Mobile Ordering (< 768px) */
+  .photo-card:nth-child(1) {
+    order: 2; /* max2 moves second */
+  }
+
+  .photo-card:nth-child(2) {
+    order: 1; /* max1 (portrait) moves to top */
+  }
+
+  .photo-card:nth-child(3) {
+    order: 3; /* max3 stays last */
+  }
+
+  /* Desktop side-by-side layout (>= 768px) */
   @media (min-width: 768px) {
     .photo-grid {
       grid-template-columns: repeat(3, 1fr);
     }
+
+    /* Reset to original DOM order for desktop */
+   .photo-card:nth-child(1) {
+    order: 1; /* max2 moves second */
+  }
+
+  .photo-card:nth-child(2) {
+    order: 2; /* max1 (portrait) moves to top */
+  }
+
+  .photo-card:nth-child(3) {
+    order: 3; /* max3 stays last */
+  }
   }
 
   .photo-card {
