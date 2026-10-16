@@ -470,9 +470,10 @@ figcaption {
   }
 
   .btn-secondary:hover {
-    background-color: transparent;
-    border-color: var(--color-navy);
-    color: var(--color-text-main);
+    background-color: #7c3bed;
+    color: var(--color-text-inverse);
+    border-color: #7c3bed;
+
   }
 
   .btn-whatsapp {
@@ -712,6 +713,7 @@ hr.divider-full-inverted {
   margin-inline: auto;
   padding: 1rem;
   color: inherit;
+  text-align: center;
 }
 
 .prose-container ul { /* Styles all content lists automatically */

@@ -1,20 +1,269 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+
 ---
 
 <BaseLayout 
   title="Pricing | Helix Equine Vets"
-  description="View our transparent pricing for all equine veterinary services at Helix Equine Vets."
+  description="Transparent pricing for our services"
 >
 
-<section>
+<section class="pricing-section">
+  <div class="pricing-container">
+    
+    <!-- Header -->
+    <header class="section-header">
+      <span class="section-eyebrow">Full Transparency</span>
+      <h1>Our Prices</h1>
+      <p class="vat-notice">All listed prices include VAT</p>
+    </header>
 
-  <div class="section-header">
-    <span class="section-eyebrow">Full Transparency</span>
-    <h1 class="section-title">Our Prices</h1>
+    <!-- Main Pricing Grid -->
+    <div class="pricing-grid">
+
+      <article class="price-card">
+        <h3>Consultations & Diagnostics</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <span class="service-name">Routine Examination</span>
+            <span class="price">£60.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Lameness Examination</span>
+            <span class="price">£75.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Colic Examination</span>
+            <span class="price">£75.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Gastroscopy</span>
+            <span class="price">£300.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Strangles Blood Test</span>
+            <span class="price">£45.00</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="price-card">
+        <h3>Routine & Vaccinations</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <span class="service-name">Flu + Tetanus Combined Vaccine</span>
+            <span class="price">£42.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Flu Only Vaccine</span>
+            <span class="price">£40.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Tetanus Only Vaccine</span>
+            <span class="price">£25.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Routine Dental Exam & Rasp <small>(sedation included)</small></span>
+            <span class="price">£90.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Routine Dental & Vaccine Package</span>
+            <span class="price">£125.00</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="price-card">
+        <h3>Procedures & Vettings</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <span class="service-name">Passport + Microchip Combined</span>
+            <span class="price">£90.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">2-Stage Pre-Purchase Exam (PPE)</span>
+            <span class="price">£250.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">5-Stage Pre-Purchase Exam (PPE)</span>
+            <span class="price">£400.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Standing Castration</span>
+            <span class="price">£250.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Bilateral Joint Injection</span>
+            <span class="price">£300.00</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="price-card visit-card">
+        <div class="card-badge">Call-Out Fees</div>
+        <h3>Visit Charges</h3>
+        <p class="visit-subtext">Calculated by distance from practice hub (NE66 4TA)</p>
+
+        <ul class="price-list">
+          <li class="price-item">
+            <span class="service-name">Zone A <small>(0–10 miles)</small></span>
+            <span class="price">£30.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Zone B <small>(10–20 miles)</small></span>
+            <span class="price">£45.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Zone C <small>(20–30 miles)</small></span>
+            <span class="price">£60.00</span>
+          </li>
+          <li class="price-item">
+            <span class="service-name">Zone D <small>(30–40 miles)</small></span>
+            <span class="price">£70.00</span>
+          </li>
+        </ul>
+      </article>
+    </div>
   </div>
-
 </section>
+
+<style>
+  /* Container & Outer Layout */
+  .pricing-section {
+    padding: 4rem 1.5rem;
+    background-color: var(--color-bg-site);
+  }
+
+  .pricing-container {
+    max-width: var(--max-width-wide, 71.25rem);
+    margin: 0 auto;
+  }
+
+  .vat-notice {
+    font-size: 0.95rem;
+    color: var(--color-teal);
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+
+  /* Responsive Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Price Card Styling */
+  .price-card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: 0 2px 8px rgba(11, 34, 64, 0.04);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .price-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(11, 34, 64, 0.08);
+  }
+
+  .price-card h3 {
+    font-family: var(--font-heading);
+    color: var(--color-navy);
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-bg-subtle);
+  }
+
+  /* Special Highlight for Visit Charges Card */
+  .price-card.visit-card {
+    border-color: var(--color-teal);
+    background-color: var(--color-bg-surface);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: -12px;
+    right: 1.5rem;
+    background-color: var(--color-teal);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .visit-subtext {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-top: -0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Price Item List & Leader Lines */
+  .price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .price-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .service-name {
+    font-weight: 500;
+    color: var(--color-text-main);
+  }
+
+  .service-name small {
+    color: var(--color-text-muted);
+    font-weight: 400;
+    font-size: 0.85em;
+  }
+
+  /* Dot leader line between service and price */
+  .price-item::before {
+    content: '';
+    flex: 1;
+    order: 2;
+    border-bottom: 1px dotted var(--color-border);
+    margin: 0 0.25rem;
+    transform: translateY(-4px);
+  }
+
+  .service-name {
+    order: 1;
+  }
+
+  .price {
+    order: 3;
+    font-weight: 600;
+    color: var(--color-navy);
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+</style>
 
 </BaseLayout>
