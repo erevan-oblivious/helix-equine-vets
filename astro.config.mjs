@@ -6,5 +6,8 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   output: 'server', // <-- Required for API endpoints to work
-  adapter: cloudflare()
+  adapter: cloudflare(),
+  build: {
+    inlineStylesheets: 'always', // Inlines all stylesheets directly in <head>
+  },
 });
