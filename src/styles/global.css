@@ -430,6 +430,7 @@ figcaption {
     flex-wrap: wrap;
     gap: 1rem;
     margin: 0 auto 2.25rem;
+    justify-content: center;
   }
 
   .btn {
