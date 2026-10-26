@@ -49,7 +49,7 @@ ul {
 /* BRAND CORE PALETTE (Logo-Derived) */
   --color-navy: #0B2240;        /* Deep Navy: Dominant text, headers, primary buttons */
   --color-teal: #005B60;        /* Dark Teal: Secondary badges, icons, subtle borders */
-  --color-gold: #C59245;        /* Warm Gold: Primary CTAs, highlights, emergency badges */
+  --color-gold: #9E7231;        /* Warm Gold: Primary CTAs, highlights, emergency badges */
 
   /* Gold Hover State */
   --color-gold-hover: #B07E34;
@@ -238,7 +238,7 @@ figcaption {
 .header {
   position: relative;
   width: 100%;
-  background-color: var(--color-bg-main);
+  background-color: var(--color-bg-site);
 }
 
 .header-transparent {
