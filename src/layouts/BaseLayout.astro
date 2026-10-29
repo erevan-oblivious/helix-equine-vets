@@ -52,6 +52,33 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
     <link rel="icon" href="/helix-favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/helix-favicon.png" />
 
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "VeterinaryCare",
+      "name": "Helix Equine Vets",
+      "image": new URL("/helix-logo-1.jpg", Astro.site || Astro.url.origin).href,
+      "@id": "https://www.helixequine.co.uk",
+      "url": "https://www.helixequine.co.uk",
+      "telephone": "+447721495247",
+      "email": "info@helixequine.co.uk",
+      "priceRange": "££",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Callaly Long House, Callaly",
+        "addressLocality": "Alnwick",
+        "addressRegion": "Northumberland",
+        "postalCode": "NE66 4TA",
+        "addressCountry": "GB"
+      },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Northumberland" },
+        { "@type": "City", "name": "Newcastle upon Tyne" },
+        { "@type": "City", "name": "Alnwick" },
+        { "@type": "City", "name": "Morpeth" }
+      ]
+    })} />
+
 </head>
 
 <body>
