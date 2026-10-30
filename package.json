@@ -19,6 +19,10 @@
     "astro": "^7.3.4"
   },
   "allowScripts": {
-    "esbuild": true
+    "esbuild": true,
+    "workerd@1.20261023.1": true
+  },
+  "overrides": {
+    "undici": "latest"
   }
 }
