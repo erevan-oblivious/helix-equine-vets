@@ -66,7 +66,7 @@ export const POST: APIRoute = async (context) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: `${siteName} <onboarding@resend.dev>`, // Must be a verified domain or resend.dev for testing
+        from: `${siteName} <notifications@helixequine.co.uk>`, // Must be a verified domain or resend.dev for testing
         to: [toEmail],
         reply_to: replyToEmail,
         subject: `New Submission: ${senderName} — ${siteName}`,
