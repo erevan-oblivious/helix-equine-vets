@@ -5,5 +5,9 @@
 	"name": "helix-equine-vets",
 	"observability": {
 		"enabled": true
-	}
+	},
+	"vars": {
+    	"CONTACT_EMAIL": "info@helixequine.co.uk",
+		"SITE_NAME": "Helix-Equine-Vets"
+  },
 }
