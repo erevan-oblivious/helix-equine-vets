@@ -9,6 +9,7 @@ import { Image } from 'astro:assets';
 import LogoImg from '../images/helix-logo-2.png';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import PageNavigationGrid from '../components/PageNavigationGrid.astro';
+import NewHorseFloat from '../components/NewHorseFloat.astro';
 
 interface Props {
   title?: string;
@@ -161,6 +162,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
   </nav>
 
 </footer>
+
+<NewHorseFloat />
 
 <WhatsAppFloat />
 
