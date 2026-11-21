@@ -44,16 +44,16 @@
 
         <div class="form-group">
           <label for="billing-address">Home / Billing Address <span class="required">*</span></label>
-          <input type="text" id="first-line" name="firstLine" required placeholder="First line of address" />
+          <input type="text" id="first-line" name="firstLineHomeAddress" required placeholder="First line of address" />
         </div>
         <div class="form-group">
-          <input type="text" id="second-line" name="secondLine" placeholder="Second line of address" />
+          <input type="text" id="second-line" name="secondLineHomeAddress" placeholder="Second line of address" />
         </div>
         <div class="form-group">
-          <input type="text" id="town-city" name="townCity" required placeholder="Town or City" />
+          <input type="text" id="town-city" name="townCityHomeAddress" required placeholder="Town or City" />
         </div>
         <div class="form-group">
-          <input type="text" id="postcode" name="postcode" required placeholder="Postcode" />
+          <input type="text" id="postcode" name="postcodeHomeAddress" required placeholder="Postcode" />
         </div>
 
         <!-- CONDITIONAL RADIO TOGGLE -->
@@ -77,21 +77,28 @@
         <legend class="fieldset-title">Yard Location & Access</legend>
         
         <div class="form-group">
-          <label for="yard-name">Yard Name / Livery <span class="required">*</span></label>
+          <label for="yard-name">Yard Name & Address <span class="required">*</span></label>
           <input type="text" id="yard-name" name="yardName" data-yard-required placeholder="e.g. Highfield Stables or Manor Farm" />
         </div>
 
-        <div class="form-row two-col">
-          <div class="form-group">
-            <label for="yard-postcode">Yard Postcode <span class="required">*</span></label>
-            <input type="text" id="yard-postcode" name="yardPostcode" data-yard-required placeholder="e.g. NE61 1AA" />
-            <span class="field-hint">Determines your Zone Visit discount days.</span>
-          </div>
-          <div class="form-group">
-            <label for="what3words">What3Words Location <span class="optional">(Optional)</span></label>
-            <input type="text" id="what3words" name="what3words" placeholder="e.g. ///words.exact.location" />
-            <span class="field-hint">Helps us pinpoint exact field or stable gates.</span>
-          </div>
+        <div class="form-group">
+          <label for="yard-address">Yard Address <span class="required">*</span></label>
+          <input type="text" id="first-line-yard-address" name="firstLineYardAddress" data-yard-required placeholder="First Line of Address of yard/ stable address" />
+        </div>
+        <div class="form-group">
+          <input type="text" id="second-line" name="secondLineYardAddress" placeholder="Second line of yard/ stable address" />
+        </div>
+        <div class="form-group">
+          <input type="text" id="town-city-yard-address" name="townCityYardAddress" required placeholder="Town or City of yard/ stable address" />
+        </div>
+        <div class="form-group">
+          <input type="text" id="postcode-yard-address" name="postcodeYardAddress" required placeholder="Postcode" />
+        </div>
+
+        <div class="form-group">
+          <label for="what3words">What3Words Location <span class="optional">(Optional)</span></label>
+          <input type="text" id="what3words" name="what3words" placeholder="e.g. ///words.exact.location" />
+          <span class="field-hint">Helps us pinpoint exact field or stable gates.</span>
         </div>
 
         <div class="form-group">
